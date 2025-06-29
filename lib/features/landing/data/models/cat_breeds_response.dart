@@ -21,7 +21,7 @@ abstract class CatBreedsResponse with _$CatBreedsResponse {
     required int adaptability,
     @JsonKey(name: 'life_span') required String lifeSpan,
     @JsonKey(name: 'reference_image_id') required String? referenceImageId,
-    required ImageResponse? image,
+    required CatImageResponse? image,
   }) = _CatBreedsResponse;
 
   factory CatBreedsResponse.fromJson(Map<String, dynamic> json) =>
@@ -43,17 +43,18 @@ abstract class CatBreedsResponse with _$CatBreedsResponse {
 }
 
 @Freezed(copyWith: false, toJson: false)
-abstract class ImageResponse with _$ImageResponse {
-  const ImageResponse._();
-  const factory ImageResponse({
+abstract class CatImageResponse with _$CatImageResponse {
+  const CatImageResponse._();
+  const factory CatImageResponse({
     required String id,
     required int width,
     required int height,
     required String url,
-  }) = _ImageResponse;
+  }) = _CatImageResponse;
 
-  factory ImageResponse.fromJson(Map<String, dynamic> json) =>
-      _$ImageResponseFromJson(json);
+  factory CatImageResponse.fromJson(Map<String, dynamic> json) =>
+      _$CatImageResponseFromJson(json);
 
-  Image toEntity() => Image(id: id, width: width, height: height, url: url);
+  CatImage toEntity() =>
+      CatImage(id: id, width: width, height: height, url: url);
 }

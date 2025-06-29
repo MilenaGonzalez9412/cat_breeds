@@ -15,16 +15,16 @@ abstract class CatBreed with _$CatBreed {
     required int adaptability,
     required String lifeSpan,
     required String? referenceImageId,
-    required Image? image,
+    required CatImage? image,
   }) = _CatBreed;
 }
 
 @freezed
-abstract class Image with _$Image {
-  const factory Image({
+abstract class CatImage with _$CatImage {
+  const factory CatImage({
     required String id,
     required int width,
     required int height,
     required String url,
-  }) = _Image;
+  }) = _CatImage;
 }

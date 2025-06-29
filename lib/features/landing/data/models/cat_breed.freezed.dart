@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CatBreed {
 
- String get id; String get name; String get description; String get origin; String get countryCodes; String get countryCode; int get intelligence; int get adaptability; String get lifeSpan; String? get referenceImageId; Image? get image;
+ String get id; String get name; String get description; String get origin; String get countryCodes; String get countryCode; int get intelligence; int get adaptability; String get lifeSpan; String? get referenceImageId; CatImage? get image;
 /// Create a copy of CatBreed
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,11 +46,11 @@ abstract mixin class $CatBreedCopyWith<$Res>  {
   factory $CatBreedCopyWith(CatBreed value, $Res Function(CatBreed) _then) = _$CatBreedCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String description, String origin, String countryCodes, String countryCode, int intelligence, int adaptability, String lifeSpan, String? referenceImageId, Image? image
+ String id, String name, String description, String origin, String countryCodes, String countryCode, int intelligence, int adaptability, String lifeSpan, String? referenceImageId, CatImage? image
 });
 
 
-$ImageCopyWith<$Res>? get image;
+$CatImageCopyWith<$Res>? get image;
 
 }
 /// @nodoc
@@ -76,19 +76,19 @@ as int,adaptability: null == adaptability ? _self.adaptability : adaptability //
 as int,lifeSpan: null == lifeSpan ? _self.lifeSpan : lifeSpan // ignore: cast_nullable_to_non_nullable
 as String,referenceImageId: freezed == referenceImageId ? _self.referenceImageId : referenceImageId // ignore: cast_nullable_to_non_nullable
 as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
-as Image?,
+as CatImage?,
   ));
 }
 /// Create a copy of CatBreed
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ImageCopyWith<$Res>? get image {
+$CatImageCopyWith<$Res>? get image {
     if (_self.image == null) {
     return null;
   }
 
-  return $ImageCopyWith<$Res>(_self.image!, (value) {
+  return $CatImageCopyWith<$Res>(_self.image!, (value) {
     return _then(_self.copyWith(image: value));
   });
 }
@@ -112,7 +112,7 @@ class _CatBreed implements CatBreed {
 @override final  int adaptability;
 @override final  String lifeSpan;
 @override final  String? referenceImageId;
-@override final  Image? image;
+@override final  CatImage? image;
 
 /// Create a copy of CatBreed
 /// with the given fields replaced by the non-null parameter values.
@@ -144,11 +144,11 @@ abstract mixin class _$CatBreedCopyWith<$Res> implements $CatBreedCopyWith<$Res>
   factory _$CatBreedCopyWith(_CatBreed value, $Res Function(_CatBreed) _then) = __$CatBreedCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String description, String origin, String countryCodes, String countryCode, int intelligence, int adaptability, String lifeSpan, String? referenceImageId, Image? image
+ String id, String name, String description, String origin, String countryCodes, String countryCode, int intelligence, int adaptability, String lifeSpan, String? referenceImageId, CatImage? image
 });
 
 
-@override $ImageCopyWith<$Res>? get image;
+@override $CatImageCopyWith<$Res>? get image;
 
 }
 /// @nodoc
@@ -174,7 +174,7 @@ as int,adaptability: null == adaptability ? _self.adaptability : adaptability //
 as int,lifeSpan: null == lifeSpan ? _self.lifeSpan : lifeSpan // ignore: cast_nullable_to_non_nullable
 as String,referenceImageId: freezed == referenceImageId ? _self.referenceImageId : referenceImageId // ignore: cast_nullable_to_non_nullable
 as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
-as Image?,
+as CatImage?,
   ));
 }
 
@@ -182,32 +182,32 @@ as Image?,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ImageCopyWith<$Res>? get image {
+$CatImageCopyWith<$Res>? get image {
     if (_self.image == null) {
     return null;
   }
 
-  return $ImageCopyWith<$Res>(_self.image!, (value) {
+  return $CatImageCopyWith<$Res>(_self.image!, (value) {
     return _then(_self.copyWith(image: value));
   });
 }
 }
 
 /// @nodoc
-mixin _$Image {
+mixin _$CatImage {
 
  String get id; int get width; int get height; String get url;
-/// Create a copy of Image
+/// Create a copy of CatImage
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ImageCopyWith<Image> get copyWith => _$ImageCopyWithImpl<Image>(this as Image, _$identity);
+$CatImageCopyWith<CatImage> get copyWith => _$CatImageCopyWithImpl<CatImage>(this as CatImage, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Image&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatImage&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
 }
 
 
@@ -216,15 +216,15 @@ int get hashCode => Object.hash(runtimeType,id,width,height,url);
 
 @override
 String toString() {
-  return 'Image(id: $id, width: $width, height: $height, url: $url)';
+  return 'CatImage(id: $id, width: $width, height: $height, url: $url)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ImageCopyWith<$Res>  {
-  factory $ImageCopyWith(Image value, $Res Function(Image) _then) = _$ImageCopyWithImpl;
+abstract mixin class $CatImageCopyWith<$Res>  {
+  factory $CatImageCopyWith(CatImage value, $Res Function(CatImage) _then) = _$CatImageCopyWithImpl;
 @useResult
 $Res call({
  String id, int width, int height, String url
@@ -235,14 +235,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$ImageCopyWithImpl<$Res>
-    implements $ImageCopyWith<$Res> {
-  _$ImageCopyWithImpl(this._self, this._then);
+class _$CatImageCopyWithImpl<$Res>
+    implements $CatImageCopyWith<$Res> {
+  _$CatImageCopyWithImpl(this._self, this._then);
 
-  final Image _self;
-  final $Res Function(Image) _then;
+  final CatImage _self;
+  final $Res Function(CatImage) _then;
 
-/// Create a copy of Image
+/// Create a copy of CatImage
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? width = null,Object? height = null,Object? url = null,}) {
   return _then(_self.copyWith(
@@ -260,8 +260,8 @@ as String,
 /// @nodoc
 
 
-class _Image implements Image {
-  const _Image({required this.id, required this.width, required this.height, required this.url});
+class _CatImage implements CatImage {
+  const _CatImage({required this.id, required this.width, required this.height, required this.url});
   
 
 @override final  String id;
@@ -269,17 +269,17 @@ class _Image implements Image {
 @override final  int height;
 @override final  String url;
 
-/// Create a copy of Image
+/// Create a copy of CatImage
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ImageCopyWith<_Image> get copyWith => __$ImageCopyWithImpl<_Image>(this, _$identity);
+_$CatImageCopyWith<_CatImage> get copyWith => __$CatImageCopyWithImpl<_CatImage>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Image&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatImage&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
 }
 
 
@@ -288,15 +288,15 @@ int get hashCode => Object.hash(runtimeType,id,width,height,url);
 
 @override
 String toString() {
-  return 'Image(id: $id, width: $width, height: $height, url: $url)';
+  return 'CatImage(id: $id, width: $width, height: $height, url: $url)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
-  factory _$ImageCopyWith(_Image value, $Res Function(_Image) _then) = __$ImageCopyWithImpl;
+abstract mixin class _$CatImageCopyWith<$Res> implements $CatImageCopyWith<$Res> {
+  factory _$CatImageCopyWith(_CatImage value, $Res Function(_CatImage) _then) = __$CatImageCopyWithImpl;
 @override @useResult
 $Res call({
  String id, int width, int height, String url
@@ -307,17 +307,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ImageCopyWithImpl<$Res>
-    implements _$ImageCopyWith<$Res> {
-  __$ImageCopyWithImpl(this._self, this._then);
+class __$CatImageCopyWithImpl<$Res>
+    implements _$CatImageCopyWith<$Res> {
+  __$CatImageCopyWithImpl(this._self, this._then);
 
-  final _Image _self;
-  final $Res Function(_Image) _then;
+  final _CatImage _self;
+  final $Res Function(_CatImage) _then;
 
-/// Create a copy of Image
+/// Create a copy of CatImage
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? width = null,Object? height = null,Object? url = null,}) {
-  return _then(_Image(
+  return _then(_CatImage(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,width: null == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
 as int,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable

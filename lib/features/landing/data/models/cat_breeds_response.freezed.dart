@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CatBreedsResponse {
 
- String get id; String get name; String get description; String get origin;@JsonKey(name: 'country_codes') String get countryCodes;@JsonKey(name: 'country_code') String get countryCode; int get intelligence; int get adaptability;@JsonKey(name: 'life_span') String get lifeSpan;@JsonKey(name: 'reference_image_id') String? get referenceImageId; ImageResponse? get image;
+ String get id; String get name; String get description; String get origin;@JsonKey(name: 'country_codes') String get countryCodes;@JsonKey(name: 'country_code') String get countryCode; int get intelligence; int get adaptability;@JsonKey(name: 'life_span') String get lifeSpan;@JsonKey(name: 'reference_image_id') String? get referenceImageId; CatImageResponse? get image;
 
 
 
@@ -57,7 +57,7 @@ class _CatBreedsResponse extends CatBreedsResponse {
 @override final  int adaptability;
 @override@JsonKey(name: 'life_span') final  String lifeSpan;
 @override@JsonKey(name: 'reference_image_id') final  String? referenceImageId;
-@override final  ImageResponse? image;
+@override final  CatImageResponse? image;
 
 
 
@@ -84,7 +84,7 @@ String toString() {
 
 
 /// @nodoc
-mixin _$ImageResponse {
+mixin _$CatImageResponse {
 
  String get id; int get width; int get height; String get url;
 
@@ -92,7 +92,7 @@ mixin _$ImageResponse {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CatImageResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -101,7 +101,7 @@ int get hashCode => Object.hash(runtimeType,id,width,height,url);
 
 @override
 String toString() {
-  return 'ImageResponse(id: $id, width: $width, height: $height, url: $url)';
+  return 'CatImageResponse(id: $id, width: $width, height: $height, url: $url)';
 }
 
 
@@ -113,9 +113,9 @@ String toString() {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _ImageResponse extends ImageResponse {
-  const _ImageResponse({required this.id, required this.width, required this.height, required this.url}): super._();
-  factory _ImageResponse.fromJson(Map<String, dynamic> json) => _$ImageResponseFromJson(json);
+class _CatImageResponse extends CatImageResponse {
+  const _CatImageResponse({required this.id, required this.width, required this.height, required this.url}): super._();
+  factory _CatImageResponse.fromJson(Map<String, dynamic> json) => _$CatImageResponseFromJson(json);
 
 @override final  String id;
 @override final  int width;
@@ -127,7 +127,7 @@ class _ImageResponse extends ImageResponse {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CatImageResponse&&(identical(other.id, id) || other.id == id)&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&(identical(other.url, url) || other.url == url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -136,7 +136,7 @@ int get hashCode => Object.hash(runtimeType,id,width,height,url);
 
 @override
 String toString() {
-  return 'ImageResponse(id: $id, width: $width, height: $height, url: $url)';
+  return 'CatImageResponse(id: $id, width: $width, height: $height, url: $url)';
 }
 
 

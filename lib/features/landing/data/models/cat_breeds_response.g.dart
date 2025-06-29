@@ -21,11 +21,13 @@ _CatBreedsResponse _$CatBreedsResponseFromJson(Map<String, dynamic> json) =>
       image:
           json['image'] == null
               ? null
-              : ImageResponse.fromJson(json['image'] as Map<String, dynamic>),
+              : CatImageResponse.fromJson(
+                json['image'] as Map<String, dynamic>,
+              ),
     );
 
-_ImageResponse _$ImageResponseFromJson(Map<String, dynamic> json) =>
-    _ImageResponse(
+_CatImageResponse _$CatImageResponseFromJson(Map<String, dynamic> json) =>
+    _CatImageResponse(
       id: json['id'] as String,
       width: (json['width'] as num).toInt(),
       height: (json['height'] as num).toInt(),
