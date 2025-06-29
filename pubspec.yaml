@@ -12,10 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.2.1
+  flutter_hooks: ^0.21.2
+  flutter_native_splash: ^2.4.0
   flutter_riverpod: ^2.6.1
   freezed: ^3.0.6
   freezed_annotation: ^3.0.0
   go_router: ^15.2.4
+  hooks_riverpod: ^2.6.1
   json_annotation: ^4.9.0
   json_serializable: ^6.9.5
 
@@ -23,6 +26,16 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
+
+flutter_native_splash:
+  android: true
+  ios: true
+  color: "#1B2021"
+  image: assets/pexels-ingewallu-126407.jpg
+
+  android_12:
+    color: "#1B2021"
+    image: assets/pexels-ingewallu-126407.jpg
 
 flutter:
   uses-material-design: true
