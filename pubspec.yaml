@@ -30,15 +30,14 @@ dev_dependencies:
 flutter_native_splash:
   android: true
   ios: true
-  color: "#1B2021"
-  image: assets/pexels-ingewallu-126407.jpg
+  background_image: "assets/cat_breeds.png"
 
   android_12:
-    color: "#1B2021"
-    image: assets/pexels-ingewallu-126407.jpg
+    background_image: "assets/cat_breeds.png"
 
 flutter:
   uses-material-design: true
 
   assets:
     - .env
+    - "assets/cat_breeds.png"

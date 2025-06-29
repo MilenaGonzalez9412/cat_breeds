@@ -1,8 +1,10 @@
+import 'package:cat_breeds/common_widgets/custom_text_display.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../controllers/providers.dart';
+import '../widgets/breed_search_field.dart';
 
 class LandingPage extends StatelessWidget {
   static const name = 'landing-page';
@@ -11,7 +13,10 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _LandingPage());
+    return Scaffold(
+      appBar: AppBar(title: Center(child: Text('Cat Breeds'))),
+      body: _LandingPage(),
+    );
   }
 }
 
@@ -39,80 +44,90 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
       data: (catBreeds) {
         return Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                onChanged: (value) {
-                  ref.read(searchBreedsQueryProvider.notifier).state = value;
-                },
-                controller: _searchBreedsController,
-                autofocus: true,
-                decoration: InputDecoration(
-                  labelText: 'Search breed',
-                  suffixIcon: Icon(Icons.search),
-                ),
-              ),
-            ),
-
-            // BreedSearchBar(
-
-            // ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: catBreeds.length,
-                itemBuilder: (context, index) {
-                  final catBreed = catBreeds[index];
-                  return Card(
-                    shadowColor: Colors.black,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(catBreed.name),
-                            TextButton(
-                              onPressed:
-                                  () => context.push(
-                                    '/breed-detail',
-                                    extra: catBreed,
+            BreedSearchField(searchBreedsController: _searchBreedsController),
+            catBreeds.isNotEmpty
+                ? Expanded(
+                  child: ListView.builder(
+                    itemCount: catBreeds.length,
+                    itemBuilder: (context, index) {
+                      final catBreed = catBreeds[index];
+                      return Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    catBreed.name,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
                                   ),
-                              child: Text('Mas detalles'),
-                            ),
-                          ],
+                                  TextButton.icon(
+                                    label: Text('More details'),
+                                    onPressed: () {
+                                      context.push(
+                                        '/breed-detail',
+                                        extra: catBreed,
+                                      );
+                                      _searchBreedsController.clear();
+                                      ref
+                                          .read(
+                                            searchBreedsQueryProvider.notifier,
+                                          )
+                                          .state = '';
+                                    },
+                                    icon: Icon(Icons.pets),
+                                  ),
+                                ],
+                              ),
+                              catBreed.image != null
+                                  ? Image.network(
+                                    catBreed.image!.url,
+                                    loadingBuilder: (
+                                      context,
+                                      child,
+                                      loadingProgress,
+                                    ) {
+                                      if (loadingProgress != null) {
+                                        return Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      }
+                                      return child;
+                                    },
+                                  )
+                                  : Image.network(
+                                    'https://i.pinimg.com/736x/1f/f7/4b/1ff74b5a68ff857ec39654e33a4306d3.jpg',
+                                  ),
+                              SizedBox(height: 8),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CustomTextDisplay(
+                                    title: 'Country Origin: ',
+                                    content: catBreed.origin,
+                                  ),
+                                  CustomTextDisplay(
+                                    title: 'Intelligence: ',
+                                    content: catBreed.intelligence.toString(),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        catBreed.image != null
-                            ? Image.network(
-                              catBreed.image!.url,
-                              loadingBuilder: (
-                                context,
-                                child,
-                                loadingProgress,
-                              ) {
-                                if (loadingProgress != null) {
-                                  return Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
-                                return child;
-                              },
-                            )
-                            : Image.network(
-                              'https://i.pinimg.com/736x/1f/f7/4b/1ff74b5a68ff857ec39654e33a4306d3.jpg',
-                            ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Pais de Origen'),
-                            Text('Inteligencia'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+                      );
+                    },
+                  ),
+                )
+                : Center(child: Text('No cat breeds found ')),
           ],
         );
       },
