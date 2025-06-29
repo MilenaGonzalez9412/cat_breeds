@@ -46,7 +46,7 @@ class _LandingPageState extends ConsumerState<_LandingPage> {
           children: [
             BreedSearchField(searchBreedsController: _searchBreedsController),
             catBreeds.isNotEmpty
-                ? Expanded(
+                ? Flexible(
                   child: ListView.builder(
                     itemCount: catBreeds.length,
                     itemBuilder: (context, index) {

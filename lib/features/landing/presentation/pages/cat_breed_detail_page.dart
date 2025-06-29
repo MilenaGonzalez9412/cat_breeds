@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../data/models/cat_breed.dart';
 
+const String defaultImageUrl =
+    'https://i.pinimg.com/736x/1f/f7/4b/1ff74b5a68ff857ec39654e33a4306d3.jpg';
+
 class CatBreedDetailPage extends StatelessWidget {
   static const name = 'breed-detail';
 
@@ -38,41 +41,40 @@ class _CatBreedDetailView extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            catBreed.image != null
-                ? Image.network(
-                  catBreed.image!.url,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress != null) {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                    return child;
-                  },
-                )
-                : Image.network(
-                  'https://i.pinimg.com/736x/1f/f7/4b/1ff74b5a68ff857ec39654e33a4306d3.jpg',
-                ),
-            Expanded(
+            Image.network(
+              catBreed.image?.url ?? defaultImageUrl,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress != null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                return child;
+              },
+            ),
+            Flexible(
               child: SingleChildScrollView(
                 child: Column(
-                  spacing: 4,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomTextDisplay(
                       title: 'Description: ',
                       content: catBreed.description,
                     ),
+                    SizedBox(height: 4),
                     CustomTextDisplay(
                       title: 'Origin Country: ',
                       content: catBreed.origin,
                     ),
+                    SizedBox(height: 4),
                     CustomTextDisplay(
                       title: 'Intelligence: ',
                       content: catBreed.intelligence.toString(),
                     ),
+                    SizedBox(height: 4),
                     CustomTextDisplay(
                       title: 'Adaptability: ',
                       content: catBreed.adaptability.toString(),
                     ),
+                    SizedBox(height: 4),
                     CustomTextDisplay(
                       title: 'Life span: ',
                       content: '${catBreed.lifeSpan} years',
