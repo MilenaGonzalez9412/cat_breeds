@@ -11,3 +11,9 @@ Proyecto realizado en Flutter para consultar razas de gatos.
    - flutter pub get
    - dart run build_runner build -d
    - flutter run
+
+Compatibilidad en Android
+![CatBreeds-iOS](https://github.com/user-attachments/assets/945a10e9-6c7b-43ad-8877-0c79995c9ed4)
+
+Compatibilidad de iOS
+![CatBreeds-Android](https://github.com/user-attachments/assets/968ac624-060c-445d-968c-2903fa7716a2)
